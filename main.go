@@ -1,6 +1,7 @@
 package main
 
 import (
+	"botpattern/utils"
 	"flag"
 	"fmt"
 	"os"
@@ -15,9 +16,11 @@ var (
 )
 
 func main() {
+	utils.LoadDotenv()
 	flag.Parse()
-
-	c, err := discord.New("Bot " + "")
+	
+	token := os.Getenv("TOKEN")
+	c, err := discord.New("Bot " + token)
 	if err != nil {
 		fmt.Println("Hata: ", err)
 	}
